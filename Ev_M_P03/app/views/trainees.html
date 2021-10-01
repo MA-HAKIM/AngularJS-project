@@ -1,0 +1,31 @@
+﻿<div class="row">
+    <div class="col">
+        <h1 class="d-flex justify-content-center">TRAINEES LIST</h1>
+        <div class="d-flex justify-content-end mb-1">
+            <a href="#!/create" class="btn btn-outline-primary">Create</a>
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Admit Date</th>
+                    <th>Email</th>
+                    <th>Edit / Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="a in model.trainees">
+                    <td><img class="rounded-pill" width="60" ng-src="{{url}}/Images/{{a.Picture}}" /></td>
+                    <td>{{a.TraineeName}}</td>
+                    <td>{{a.AdmitDate | date:'yyyy-MM-dd'}}</td>
+                    <td>{{a.Email}}</td>
+                    <td>
+                        <a href="#!/edit/{{a.TraineeId}}" class="btn btn-info btn-sm">Edit</a>
+                        <button type="button" class="btn btn-danger btn-sm" ng-click="confirmDelete(a)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿<div class="row" ng-controller="createCtrl">
+    <div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" ng-show="msg">
+            <strong>{{msg}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" ng-show="msgErr">
+            <strong>{{msgErr}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    <div class="col">
+        <h1 class="offset-2 ps-1">ADD NEW TRAINEE</h1>
+        <form name="fadd">
+            <div class="form-group row mb-1">
+                <label class="col-form-label col-2 text-center"> Trainee Name</label>
+                <div class="col-4">
+                    <input name="TraineeName" ng-model="traineeCreate.TraineeName" ng-required="true" ng-maxlength="40" class="form-control" />
+                    <div class="text-danger" ng-show="!fadd.TraineeName.$pristine && fadd.TraineeName.$error.required">TraineeName is required</div>
+                    <div class="text-danger" ng-show="!fadd.TraineeName.$pristine && fadd.TraineeName.$error.maxlength">TraineeName can be maximun 40 cahracters in length.</div>
+                </div>
+
+            </div>
+            <div class="form-group row mb-1">
+                <label class="col-form-label col-2 text-center">Admit date</label>
+                <div class="col-4">
+                    <datepicker date-format="yyyy-MM-dd">
+                        <input name="AdmitDate" ng-model="traineeCreate.AdmitDate" required class="form-control" />
+                    </datepicker>
+                    <div class="text-danger" ng-show="!fadd.AdmitDate.$pristine && fadd.AdmitDate.$error.required">Apply date is required</div>
+
+                </div>
+
+            </div>
+            <div class="form-group row mb-1">
+                <label class="col-form-label col-2 text-center">E-mail</label>
+                <div class="col-4">
+                    <input type="email" name="email" ng-model="traineeCreate.Email" class="form-control" />
+                    <div class="text-danger" ng-show="!fadd.email.$pristine && fadd.email.$error.required">E-mail is required</div>
+
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                <label class="col-form-label col-2 text-center">Picture</label>
+                <div class="col-4">
+                    <input type="file" name="picture" ng-model="traineeCreate.Picture" class="form-control" accept="image/*" required base-sixty-four-input />
+                    <div class="text-danger" ng-show="!fadd.picture.$pristine && fadd.picture.$error.required">Picture is required</div>
+
+                </div>
+
+            </div>
+            <div class="form-group row mb-1">
+
+                <div class="col-10 offset-2">
+                    <button type="button" class="btn btn-success" ng-disabled="fadd.$invalid" ng-click="insert(fadd)">Save</button>
+
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+    <div class="row">
+        <div class="col-10 offset-2">
+            <a href="#!/trainees" class="ps-1"><h6 class="text-info">Back to list</h6></a>
+        </div>
+    </div>
+</div>
